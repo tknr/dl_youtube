@@ -19,12 +19,19 @@ do
 		TITLE=''
 	fi
 
+
 	echo ${TITLE}
 	echo ${URL}
 
 	echo ${#TITLE}
+	echo ${#URL}
+
+        if [ ${#URL} -lt 2 ] ; then
+                continue
+        fi
 
 	if [ ${#TITLE} = 0 ] ; then
+
 		youtube-dl --verbose --hls-prefer-native --encoding utf-8 ${URL} \
 		|| continue
 
