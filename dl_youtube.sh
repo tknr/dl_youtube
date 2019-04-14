@@ -32,6 +32,7 @@ do
 
 	if [ ${#TITLE} = 0 ] ; then
 
+		youtube-dl --list-format ${URL} || continue
 		youtube-dl --verbose -n --hls-prefer-native --encoding utf-8 ${URL} \
 		|| continue
 
