@@ -33,11 +33,11 @@ do
 	if [ ${#TITLE} = 0 ] ; then
 
 		youtube-dl --list-format ${URL} || continue
-		youtube-dl --verbose -n --hls-prefer-native --encoding utf-8 ${URL} \
+		youtube-dl --verbose --hls-prefer-native --encoding utf-8 ${URL} \
 		|| continue
 
 	else
-		youtube-dl --verbose -n --hls-prefer-native --encoding utf-8 ${URL} -o ${TITLE}.mp4 \
+		youtube-dl --verbose --hls-prefer-native --encoding utf-8 ${URL} -o ${TITLE}.mp4 \
 		|| continue
 	fi
 
