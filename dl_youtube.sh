@@ -36,7 +36,7 @@ do
 		|| continue
 
 	else
-		youtube-dl --verbose -n --hls-prefer-native ${URL} -o ${TITLE}.mp4 \
+		youtube-dl --verbose -n --hls-prefer-native --encoding utf-8 ${URL} -o ${TITLE}.mp4 \
 		|| continue
 	fi
 
