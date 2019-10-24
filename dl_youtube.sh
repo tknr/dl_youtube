@@ -26,7 +26,7 @@ do
 	echo ${#TITLE}
 	echo ${#URL}
 
-        if [ ${#URL} -lt 2 ] ; then
+        if [ ${#URL} -lt 7 ] ; then
                 continue
         fi
 
