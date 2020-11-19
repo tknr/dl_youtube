@@ -2,7 +2,6 @@
 export IFS=$'\n'
 CMDNAME=`basename $0`
 FILENAME_QUEUE="queue_youtube.txt"
-echo `pwd`"/"$FILENAME_QUEUE
 if [ $# -ne 0 ]; then
     FILENAME_QUEUE=${1}
 fi
