@@ -9,7 +9,9 @@ r.html.render()
 
 title = r.html.search('<p class="video-player-title">{}</p>')[0]
 
-year = re.sub("\\D","",r.html.search('<small>{}</small>')[0])
+#year = re.sub("\\D","",r.html.search('<p class="content-text content-text-copyright"><small>{}</small></p>')[0])
+year = html.search('<p class="content-text content-text-copyright"><small>{}</small></p>')[0]
 
-print(title + " (" + str(year) + ")")
+#print(title + " (" + str(year) + ")")
+print(title + "_" + year)
 
