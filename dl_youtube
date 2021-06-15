@@ -8,6 +8,9 @@ usage_exit() {
         exit 1
 }
 
+mark_finished(){
+        sed -i -e "s|${1}|#${1}|g" ${2}
+}
 
 while getopts q:h OPT
 do
@@ -23,10 +26,6 @@ done
 shift $(($OPTIND - 1))
 
 echo "reading from "${FILENAME_QUEUE}"..."
-
-mark_finished(){
-        sed -i -e "s|${1}|#${1}|g" ${2}
-}
 
 for LINE in `cat ${FILENAME_QUEUE} | grep -v "^#"`
 do
@@ -49,8 +48,10 @@ do
 	if [ ${#TITLE} = 0 ] ; then
 		youtube-dl --list-format ${URL} || continue
 		youtube-dl --list-subs ${URL} || continue
-		youtube-dl --encoding utf-8 --all-subs ${URL} && mark_finished "${LINE}" "${FILENAME_QUEUE}"
+		youtube-dl --encoding utf-8 --all-subs ${URL} || continue
+		mark_finished "${LINE}" "${FILENAME_QUEUE}"
 	else
-		youtube-dl --encoding utf-8 ${URL} -o ${TITLE}.mp4 && mark_finished "${LINE}" "${FILENAME_QUEUE}"
+		youtube-dl --encoding utf-8 ${URL} -o ${TITLE}.mp4 || continue
+		mark_finished "${LINE}" "${FILENAME_QUEUE}"
 	fi
 done
