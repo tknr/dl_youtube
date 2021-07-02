@@ -1,4 +1,5 @@
 #!/bin/bash
+pip install -qqq -U youtube-dl || exit 1
 export IFS=$'\n'
 CMDNAME=`basename $0`
 FILENAME_QUEUE="queue_youtube.txt"
